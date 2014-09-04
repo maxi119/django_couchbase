@@ -1,8 +1,7 @@
-2014/9/4
-    clear with REST api.
 
 2014/9/4
     add option format: JSON, PICKLE, UTF8, BYTES, AUTO, default is PICKLE
+    clear with REST api... need admin:pwd in OPTIONS
     
     settings
         CACHES['default']['OPTIONS'] = {
@@ -10,7 +9,8 @@
                                         'password': 'password',
                                         'operation_timeout': 20.5,
                                         'gevent_support': False,
-                                        'format': 'PICKLE'
+                                        'format': 'PICKLE',
+                                        'admin:pwd': 'admin:password'
                                         }    
 
 2014/8/12
