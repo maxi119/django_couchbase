@@ -14,5 +14,15 @@ Use couchbase as Django cache engine
                                             'password': 'password',
                                             'operation_timeout': 20.5,
                                             'gevent_support': False,
-                                            'format': 'PICKLE'
+                                            'format': 'PICKLE',
+                                            'transcoder':myTranscoder,
+                                            'admin:pwd': 'admin:password'
                                             }
+
+                                            
+                                            
+    format: JSON, PICKLE, UTF8, BYTES, AUTO
+    
+    http://pythonhosted.org/couchbase/api/couchbase.html
+    
+    

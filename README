@@ -1,16 +1,32 @@
-2014/9/4
-    clear with REST api.
+2014/10/3
+    add optios transcoder
 
-2014/9/4
-    add option format: JSON, PICKLE, UTF8, BYTES, AUTO, default is PICKLE
-    
     settings
         CACHES['default']['OPTIONS'] = {
-                                        'bucket': 'bk',
+                                        'bucket': 'bk2',
                                         'password': 'password',
                                         'operation_timeout': 20.5,
                                         'gevent_support': False,
-                                        'format': 'PICKLE'
+                                        'format': 'PICKLE',
+                                        'transcoder': myUtil.transcoder
+                                        'admin:pwd': 'admin:password'
+                                        }    
+    Reference                                        
+        http://docs.couchbase.com/sdk-api/couchbase-python-client-1.2.3/api/transcoder.html
+
+    PICKLE is slow when parsing large object..
+2014/9/4
+    add option format: JSON, PICKLE, UTF8, BYTES, AUTO, default is PICKLE
+    clear with REST api... need admin:pwd in OPTIONS
+    
+    settings
+        CACHES['default']['OPTIONS'] = {
+                                        'bucket': 'bk2',
+                                        'password': 'password',
+                                        'operation_timeout': 20.5,
+                                        'gevent_support': False,
+                                        'format': 'PICKLE',
+                                        'admin:pwd': 'admin:password'
                                         }    
 
 2014/8/12

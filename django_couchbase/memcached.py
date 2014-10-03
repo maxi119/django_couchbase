@@ -35,6 +35,7 @@ from django.core.cache.backends.base import InvalidCacheBackendError
 from django.core.cache.backends.memcached import BaseMemcachedCache
 
 from couchbase import Couchbase,connection,exceptions
+import couchbase
 
 log = logging.getLogger('django.couchbase')
 
@@ -266,8 +267,13 @@ class CouchbaseCache(BaseMemcachedCache):
             return True
         else:
             # '{"_":"Flush is disabled for the bucket"}'
-            j = json.loads( res.data )
-            msg = j.get( '-' )
+            # 'Requested resource not found.\r\n'  REST error
+            try:
+                j = json.loads( res.data )
+                msg = j.get( '-' )
+            except Exception as e:
+                msg = res.data
+            
             log.error( "CouchbaseError: clear fail..: %s" % ( msg ) )
             return False
             
