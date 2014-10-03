@@ -75,6 +75,7 @@ class CouchbaseCache(BaseMemcachedCache):
                                      port=port,
                                      timeout=self._options.get('operation_timeout', 10 ),
                                      lockmode=connection.LOCKMODE_WAIT, 
+                                     transcoder=self._options.get('transcoder', None ),
                                      experimental_gevent_support=self._options.get('gevent_support', False ) )
                                      
         optFormat = self._options.get('format', '' )
@@ -134,7 +135,7 @@ class CouchbaseCache(BaseMemcachedCache):
 
         return rs
 
-    def add(self, key, value, timeout=0, version=None):
+    def add(self, key, value, timeout=None, version=None):
         key = self.make_key(key, version=version) 
         rs = False
         
