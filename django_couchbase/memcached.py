@@ -34,7 +34,13 @@ from django.conf import settings
 from django.core.cache.backends.base import InvalidCacheBackendError
 from django.core.cache.backends.memcached import BaseMemcachedCache
 
-from couchbase import Couchbase,connection,exceptions
+
+try:
+    from couchbase_ffi import Couchbase
+except Exception as e:
+    from couchbase import Couchbase
+
+from couchbase import connection,exceptions
 import couchbase
 
 log = logging.getLogger('django.couchbase')

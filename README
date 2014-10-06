@@ -1,3 +1,26 @@
+2014/10/6
+	Couchbase client need ffi version for pypy
+	
+	Couchbase FFI
+		https://github.com/couchbaselabs/couchbase-python-cffi
+		
+	The Error Message when running with pypy
+		File "pypy_module_cpyext_api_2.c", line 47634, in PyPyObject_IsInstance
+		File "pypy_module_cpyext_pyobject.c", line 1144, in BaseCpyTypedescr_realize
+		File "pypy_objspace_std_objspace.c", line 5175, in allocate_instance__W_ObjectObject
+		File "pypy_objspace_std_typeobject.c", line 3939, in W_TypeObject_check_user_subclass
+
+		
+	Install
+		git clone https://github.com/couchbaselabs/couchbase-python-cffi.git
+		cd couchbase-python-cffi && pypy setup.py install
+		    	
+	Instead of
+    	from couchbase import Couchbase		
+    by 
+    	from couchbase_ffi import Couchbase
+		
+
 2014/10/3
     add optios transcoder
 
