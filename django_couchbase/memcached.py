@@ -134,8 +134,8 @@ class CouchbaseCache(BaseMemcachedCache):
             #pass
             #log.error('ServerError saving %s (%d bytes)' % (key, len(value)),
             #          exc_info=True)
-            
-            rs = self._cache.add(key, value, ttl=self._get_memcache_timeout(timeout) )
+            if cacheTimeout >= 0:
+                rs = self._cache.add(key, value, ttl= cacheTimeout )
         except Exception, e:
             log.error('CouchbaseError: %s' % e, exc_info=True)
             rs = False
